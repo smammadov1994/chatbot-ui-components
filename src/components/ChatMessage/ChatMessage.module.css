@@ -1,0 +1,245 @@
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: messageSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Time-based fading for older messages */
+.message.old {
+  opacity: var(--opacity-old-message);
+  transition: all 0.3s ease;
+  filter: blur(0.5px);
+}
+
+.message.old:hover {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(-1px);
+}
+
+.message:hover .messageTimestamp {
+  filter: brightness(1.1);
+  color: var(--text-primary);
+}
+
+.message.user {
+  align-items: flex-end;
+}
+
+.message.assistant {
+  align-items: flex-start;
+}
+
+.messageContent {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 80%;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 0.5rem;
+}
+
+/* User messages */
+.messageContent.user {
+  background: var(--bubble-user-tint, #4F46E5);
+  color: var(--chat-user-text, #ffffff);
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  font-weight: 400;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* AI messages */
+.messageContent.assistant {
+  color: var(--text-primary, #ffffff);
+  font-weight: 400;
+  padding: 0;
+  border-radius: 0;
+  max-width: 85%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: block;
+  width: 100%;
+}
+
+.messageTimestamp {
+  font-size: 12px;
+  color: var(--text-muted, rgba(255, 255, 255, 0.5));
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
+.message.user .messageTimestamp {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.message.assistant .messageTimestamp {
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Markdown styling for assistant messages */
+.markdown {
+  color: var(--text-primary, #ffffff);
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.markdownParagraph {
+  margin: 0 0 1rem 0;
+  color: inherit;
+  font-weight: 400;
+}
+
+.markdownParagraph:last-child {
+  margin-bottom: 0;
+}
+
+.markdownBold {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.markdownOrderedList,
+.markdownUnorderedList {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  color: inherit;
+}
+
+.markdownListItem {
+  margin: 0.25rem 0;
+  color: inherit;
+}
+
+.markdownListItem strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.markdownH1,
+.markdownH2,
+.markdownH3 {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 1.5rem 0 0.75rem 0;
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+}
+
+.markdownH1 {
+  font-size: 1.5rem;
+}
+
+.markdownH2 {
+  font-size: 1.3rem;
+}
+
+.markdownH3 {
+  font-size: 1.1rem;
+}
+
+.markdownCode {
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+}
+
+.markdownCodeBlock {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  overflow-x: auto;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  color: var(--text-primary);
+}
+
+/* Light mode styling */
+[data-theme="light"] .messageContent.assistant {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .markdown {
+  color: #1a1a1a;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .messageContent {
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 90%;
+  }
+  
+  .messageContent.user {
+    padding: 0.875rem 1rem;
+  }
+
+  .messageContent.assistant {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .message.old {
+    filter: none;
+    opacity: 0.7;
+  }
+  
+  .message.old:hover {
+    filter: none;
+    transform: none;
+  }
+  
+  [data-theme="light"] .messageContent.assistant {
+    padding: 0.875rem 1rem;
+  }
+}
+
+/* Platform-specific font rendering optimizations */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .messageContent.assistant,
+  .messageContent.user {
+    -webkit-text-stroke: 0.5px transparent;
+  }
+}
+
+/* High-DPI (Retina) displays */
+@media screen and (min-resolution: 2dppx) {
+  .messageContent {
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: transparent;
+  }
+}

@@ -1,0 +1,159 @@
+/* Liquid Glass Components - Dark and Light Mode Support */
+
+/* Base Liquid Glass Classes */
+.liquid-glass {
+  position: relative;
+  background: var(--lg-translucency);
+  backdrop-filter: blur(var(--lg-blur)) saturate(var(--lg-saturation));
+  border: var(--lg-border);
+  border-radius: 24px;
+  box-shadow: var(--lg-shadow), var(--lg-reflection);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  will-change: transform, filter;
+}
+
+/* Hover/Focus for Fluidity */
+.liquid-glass:hover, 
+.liquid-glass:focus-within {
+  transform: scale(1.02);
+  backdrop-filter: blur(16px) saturate(200%);
+}
+
+/* Dark Mode Hover Effects */
+:root .liquid-glass:hover,
+:root .liquid-glass:focus-within {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.25);
+}
+
+/* Light Mode Hover Effects */
+[data-theme="light"] .liquid-glass:hover,
+[data-theme="light"] .liquid-glass:focus-within {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 4px 20px rgba(26, 26, 26, 0.08);
+}
+
+/* Shine Effect - Dark Mode */
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  top: -50%; 
+  left: -50%;
+  width: 200%; 
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  opacity: 0.4;
+  transition: transform 0.5s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.liquid-glass:hover::before {
+  transform: translate(15%, 15%) rotate(30deg);
+}
+
+/* Light Mode Shine Effect */
+[data-theme="light"] .liquid-glass::before {
+  background: radial-gradient(circle, rgba(26, 26, 26, 0.08) 0%, transparent 70%);
+  opacity: 0.3;
+}
+
+/* Canvas Variant */
+.liquid-glass-canvas {
+  position: relative;
+  background: var(--lg-translucency-variant);
+  backdrop-filter: blur(var(--lg-blur)) saturate(var(--lg-saturation));
+  border: var(--lg-border);
+  border-radius: 16px;
+  box-shadow: var(--lg-shadow);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  will-change: transform, filter;
+}
+
+.liquid-glass-canvas:hover, 
+.liquid-glass-canvas:focus-within {
+  transform: scale(1.02);
+  backdrop-filter: blur(14px) saturate(190%);
+}
+
+/* Dark Mode Canvas Hover */
+:root .liquid-glass-canvas:hover,
+:root .liquid-glass-canvas:focus-within {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Mode Canvas Hover */
+[data-theme="light"] .liquid-glass-canvas:hover,
+[data-theme="light"] .liquid-glass-canvas:focus-within {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Thinking Steps Variant */
+.liquid-glass-thinking {
+  position: relative;
+  background: var(--lg-translucency-thinking);
+  backdrop-filter: blur(8px) saturate(140%);
+  border: var(--lg-border);
+  border-radius: 12px;
+  box-shadow: var(--lg-shadow);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  will-change: transform, filter;
+}
+
+.liquid-glass-thinking:hover {
+  transform: translateY(-1px) scale(1.01);
+  backdrop-filter: blur(10px) saturate(160%);
+}
+
+/* Dark Mode Thinking Hover */
+:root .liquid-glass-thinking:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Light Mode Thinking Hover */
+[data-theme="light"] .liquid-glass-thinking:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(12px)) {
+  .liquid-glass,
+  .liquid-glass-canvas,
+  .liquid-glass-thinking {
+    background: var(--lg-fallback-background);
+  }
+}
+
+/* Ripple Effect Animation */
+@keyframes lg-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+/* Loading Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    var(--surface-primary) 0px,
+    var(--surface-hover) 40px,
+    var(--surface-primary) 80px
+  );
+  background-size: 200px;
+  animation: shimmer 1.5s infinite;
+}

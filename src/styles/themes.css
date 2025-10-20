@@ -1,0 +1,100 @@
+/* Theme Variables - Dark and Light Mode Support */
+
+:root {
+  /* Dark Mode (Default) */
+  --background-primary: #0a0a0a;
+  --background-secondary: rgba(15, 15, 15, 0.8);
+  --background-hover: rgba(252, 252, 252, 0.05);
+
+  --text-primary: #fcfcfc;
+  --text-secondary: rgba(252, 252, 252, 0.7);
+  --text-muted: rgba(252, 252, 252, 0.5);
+  --text-placeholder: rgba(252, 252, 252, 0.4);
+
+  --accent-primary: #4F46E5;
+  --accent-hover: #4338CA;
+  --accent-gradient-start: #4F46E5;
+  --accent-gradient-end: #6366F1;
+
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-focus: rgba(79, 70, 229, 0.3);
+  --border-hover: rgba(255, 255, 255, 0.2);
+
+  --surface-primary: rgba(15, 15, 15, 0.6);
+  --surface-secondary: rgba(252, 252, 252, 0.05);
+  --surface-hover: rgba(252, 252, 252, 0.08);
+
+  /* Liquid Glass - Dark Mode */
+  --lg-translucency: rgba(15, 15, 15, 0.1);
+  --lg-translucency-variant: rgba(15, 15, 15, 0.15);
+  --lg-translucency-thinking: rgba(15, 15, 15, 0.08);
+  --lg-border: 1px solid rgba(255, 255, 255, 0.1);
+  --lg-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --lg-reflection: inset 0 4px 20px rgba(255, 255, 255, 0.2);
+  --lg-blur: 12px;
+  --lg-saturation: 180%;
+  --lg-fallback-background: rgba(15, 15, 15, 0.9);
+
+  /* User Message Bubble */
+  --bubble-user-tint: rgba(79, 70, 229, 0.25);
+  --chat-user-text: #fcfcfc;
+
+  /* Icon Colors */
+  --icon-size: 20px;
+  --icon-color: var(--accent-primary);
+  --icon-hover-color: var(--accent-hover);
+
+  /* Transitions */
+  --transition-soft: all 0.15s ease-in-out;
+  --transition-normal: all 0.3s ease;
+
+  /* Old Message Opacity */
+  --opacity-old-message: 0.75;
+}
+
+[data-theme="light"] {
+  /* Light Mode */
+  --background-primary: #ffffff;
+  --background-secondary: rgba(255, 255, 255, 0.9);
+  --background-hover: rgba(26, 26, 26, 0.05);
+
+  --text-primary: #1a1a1a;
+  --text-secondary: rgba(26, 26, 26, 0.7);
+  --text-muted: rgba(26, 26, 26, 0.5);
+  --text-placeholder: rgba(26, 26, 26, 0.4);
+
+  --accent-primary: #4F46E5;
+  --accent-hover: #4338CA;
+  --accent-gradient-start: #4F46E5;
+  --accent-gradient-end: #6366F1;
+
+  --border-subtle: rgba(26, 26, 26, 0.1);
+  --border-focus: rgba(79, 70, 229, 0.3);
+  --border-hover: rgba(26, 26, 26, 0.2);
+
+  --surface-primary: rgba(255, 255, 255, 0.8);
+  --surface-secondary: rgba(26, 26, 26, 0.05);
+  --surface-hover: rgba(26, 26, 26, 0.08);
+
+  /* Liquid Glass - Light Mode */
+  --lg-translucency: rgba(255, 255, 255, 0.7);
+  --lg-translucency-variant: rgba(255, 255, 255, 0.8);
+  --lg-translucency-thinking: rgba(255, 255, 255, 0.3);
+  --lg-border: 1px solid rgba(26, 26, 26, 0.1);
+  --lg-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  --lg-reflection: inset 0 4px 16px rgba(26, 26, 26, 0.05);
+  --lg-blur: 12px;
+  --lg-saturation: 180%;
+  --lg-fallback-background: rgba(255, 255, 255, 0.95);
+
+  /* User Message Bubble - Light Mode */
+  --bubble-user-tint: rgba(79, 70, 229, 0.15);
+  --chat-user-text: #1a1a1a;
+
+  /* Icon Colors */
+  --icon-color: var(--accent-primary);
+  --icon-hover-color: var(--accent-hover);
+
+  /* Old Message Opacity */
+  --opacity-old-message: 0.7;
+}

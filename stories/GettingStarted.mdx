@@ -1,0 +1,212 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Getting Started" />
+
+# Getting Started
+
+Welcome to the Chat Component Library! This guide will help you get up and running quickly.
+
+## Installation
+
+Install the package via npm:
+
+```bash
+npm install @pumpads/chat-component-library
+```
+
+Or with yarn:
+
+```bash
+yarn add @pumpads/chat-component-library
+```
+
+## Basic Usage
+
+Import the components and styles:
+
+```tsx
+import { ChatInterface } from '@pumpads/chat-component-library'
+import '@pumpads/chat-component-library/styles'
+```
+
+Create a simple chat interface:
+
+```tsx
+import { useState } from 'react'
+import { ChatInterface, ChatMessage } from '@pumpads/chat-component-library'
+
+function App() {
+  const [messages, setMessages] = useState<ChatMessage[]>([])
+
+  const handleSend = (content: string) => {
+    const newMessage: ChatMessage = {
+      id: Date.now().toString(),
+      role: 'user',
+      content,
+      timestamp: new Date()
+    }
+    setMessages([...messages, newMessage])
+  }
+
+  return (
+    <ChatInterface
+      messages={messages}
+      onSendMessage={handleSend}
+      theme="dark"
+    />
+  )
+}
+```
+
+## Key Features
+
+### 🌓 Theme Support
+
+The library supports both dark and light themes:
+
+```tsx
+<ChatInterface
+  messages={messages}
+  theme="dark" // or "light" or "auto"
+/>
+```
+
+### 💬 Message Types
+
+Messages can be from users or assistants:
+
+```tsx
+const userMessage = {
+  id: '1',
+  role: 'user',
+  content: 'Hello!',
+  timestamp: new Date()
+}
+
+const assistantMessage = {
+  id: '2',
+  role: 'assistant',
+  content: 'Hi there! How can I help?',
+  timestamp: new Date(),
+  thoughtTime: 2 // Optional: shows "Thought for 2 seconds"
+}
+```
+
+### 📝 Markdown Support
+
+Assistant messages automatically support markdown:
+
+```tsx
+const message = {
+  id: '3',
+  role: 'assistant',
+  content: `
+# Heading
+**Bold text** and *italic text*
+
+- List item 1
+- List item 2
+
+\`\`\`javascript
+const code = "example"
+\`\`\`
+  `,
+  timestamp: new Date()
+}
+```
+
+### 🎬 Loading States
+
+Show a thinking indicator while processing:
+
+```tsx
+const [isLoading, setIsLoading] = useState(false)
+
+<ChatInterface
+  messages={messages}
+  isLoading={isLoading}
+  onSendMessage={handleSend}
+/>
+```
+
+### 🎨 Customization
+
+Customize the appearance with CSS variables:
+
+```css
+:root {
+  --accent-primary: #4F46E5;
+  --background-primary: #0a0a0a;
+  --text-primary: #fcfcfc;
+}
+```
+
+## Advanced Usage
+
+### Custom Components
+
+Replace default components with your own:
+
+```tsx
+<ChatInterface
+  messages={messages}
+  customComponents={{
+    message: MyCustomMessage,
+    input: MyCustomInput,
+    thinking: MyCustomThinking
+  }}
+/>
+```
+
+### Message Actions
+
+Handle message actions:
+
+```tsx
+<ChatInterface
+  messages={messages}
+  onMessageAction={(action, messageId) => {
+    console.log(`Action ${action.type} on message ${messageId}`)
+  }}
+/>
+```
+
+### Custom Thinking Phrases
+
+Provide custom thinking phrases:
+
+```tsx
+<ChatInterface
+  messages={messages}
+  thinkingPhrases={[
+    'Processing your request...',
+    'Analyzing data...',
+    'Generating response...'
+  ]}
+/>
+```
+
+## TypeScript Support
+
+The library is fully typed. Import types as needed:
+
+```tsx
+import type {
+  ChatMessage,
+  ChatInterfaceProps,
+  MessageActionType
+} from '@pumpads/chat-component-library'
+```
+
+## Next Steps
+
+- Explore the component stories to see all features
+- Check out the API documentation for each component
+- Customize the theme to match your brand
+- Add your own custom components
+
+## Need Help?
+
+- Check the component documentation
+- View the source code examples
+- Open an issue on GitHub

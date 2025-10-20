@@ -1,0 +1,56 @@
+.responseIcons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 1;
+  margin-top: 8px;
+}
+
+.iconButton {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--icon-color);
+  cursor: pointer;
+  transition: var(--transition-soft);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton:hover {
+  color: var(--icon-hover-color);
+  transform: scale(1.1);
+  background: rgba(175, 248, 80, 0.1);
+}
+
+.iconButton:focus {
+  outline: 2px solid var(--icon-color);
+  outline-offset: 2px;
+}
+
+.iconButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.iconButton:active {
+  transform: scale(0.95);
+}
+
+/* Ensure proper touch targets on mobile */
+@media (max-width: 768px) {
+  .iconButton {
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Keyboard navigation support */
+.iconButton:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}

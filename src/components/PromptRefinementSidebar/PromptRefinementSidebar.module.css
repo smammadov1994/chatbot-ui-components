@@ -1,0 +1,180 @@
+.promptRefinementSidebar {
+  position: fixed;
+  left: 60px;
+  top: 0;
+  width: 320px;
+  height: 100vh;
+  background: var(--lg-translucency, rgba(15, 15, 15, 0.1));
+  backdrop-filter: blur(var(--lg-blur, 12px)) saturate(var(--lg-saturation, 180%));
+  border-right: var(--lg-border, 1px solid rgba(255, 255, 255, 0.1));
+  box-shadow: var(--lg-shadow, 0 8px 32px rgba(0, 0, 0, 0.2));
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  animation: slideInFromLeft 0.3s ease-out;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.sidebarHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebarHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.closeButton:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.promptList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-hover) var(--surface-primary);
+}
+
+.promptList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.promptList::-webkit-scrollbar-track {
+  background: var(--surface-primary);
+}
+
+.promptList::-webkit-scrollbar-thumb {
+  background: var(--surface-hover);
+  border-radius: 4px;
+}
+
+.promptList::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+.promptItem {
+  position: relative;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.promptItem:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-focus);
+  transform: translateX(4px);
+}
+
+.promptItem:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.promptTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.promptPreview {
+  font-size: 13px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Glassmorphic Tooltip */
+.promptTooltip {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 0;
+  width: 300px;
+  background: var(--lg-translucency-thinking, rgba(15, 15, 15, 0.08));
+  backdrop-filter: blur(var(--lg-blur, 12px)) saturate(var(--lg-saturation, 180%));
+  border: var(--lg-border, 1px solid rgba(255, 255, 255, 0.1));
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  box-shadow: var(--lg-shadow, 0 8px 32px rgba(0, 0, 0, 0.2));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+
+.promptItem:hover .promptTooltip {
+  opacity: 1;
+}
+
+/* Light Mode Support */
+[data-theme="light"] .promptRefinementSidebar {
+  background: var(--lg-translucency, rgba(255, 255, 255, 0.7));
+  border-right: var(--lg-border, 1px solid rgba(26, 26, 26, 0.1));
+  box-shadow: var(--lg-shadow, 0 6px 24px rgba(0, 0, 0, 0.08));
+}
+
+[data-theme="light"] .promptTooltip {
+  background: var(--lg-translucency-thinking, rgba(255, 255, 255, 0.3));
+  border: var(--lg-border, 1px solid rgba(26, 26, 26, 0.1));
+  box-shadow: var(--lg-shadow, 0 6px 24px rgba(0, 0, 0, 0.08));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .promptRefinementSidebar {
+    left: 0;
+    width: 100%;
+    max-width: 320px;
+  }
+}
