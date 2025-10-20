@@ -20,23 +20,31 @@ export const Default: Story = {
     return (
       <div 
         style={{ 
-          width: '600px',
-          padding: '2rem',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           background: '#0a0a0a',
-          borderRadius: '12px'
+          padding: '2rem'
         }}
         data-theme="dark"
       >
-        <ChatInput
-          value={value}
-          onChange={setValue}
-          onSend={(content) => {
-            console.log('Sent:', content)
-            setValue('')
-          }}
-        />
+        <div style={{ width: '600px' }}>
+          <ChatInput
+            value={value}
+            onChange={setValue}
+            onSend={(content) => {
+              console.log('Sent:', content)
+              setValue('')
+            }}
+          />
+        </div>
       </div>
     )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
@@ -46,25 +54,33 @@ export const WithFileUpload: Story = {
     return (
       <div 
         style={{ 
-          width: '600px',
-          padding: '2rem',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           background: '#0a0a0a',
-          borderRadius: '12px'
+          padding: '2rem'
         }}
         data-theme="dark"
       >
-        <ChatInput
-          value={value}
-          onChange={setValue}
-          onSend={(content) => {
-            console.log('Sent:', content)
-            setValue('')
-          }}
-          showFileUpload={true}
-          onFileUpload={(files) => console.log('Files:', files)}
-        />
+        <div style={{ width: '600px' }}>
+          <ChatInput
+            value={value}
+            onChange={setValue}
+            onSend={(content) => {
+              console.log('Sent:', content)
+              setValue('')
+            }}
+            showFileUpload={true}
+            onFileUpload={(files) => console.log('Files:', files)}
+          />
+        </div>
       </div>
     )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
@@ -74,21 +90,29 @@ export const Disabled: Story = {
     return (
       <div 
         style={{ 
-          width: '600px',
-          padding: '2rem',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           background: '#0a0a0a',
-          borderRadius: '12px'
+          padding: '2rem'
         }}
         data-theme="dark"
       >
-        <ChatInput
-          value={value}
-          onChange={setValue}
-          onSend={(content) => console.log('Sent:', content)}
-          disabled={true}
-        />
+        <div style={{ width: '600px' }}>
+          <ChatInput
+            value={value}
+            onChange={setValue}
+            onSend={(content) => console.log('Sent:', content)}
+            disabled={true}
+          />
+        </div>
       </div>
     )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
@@ -98,24 +122,32 @@ export const CustomPlaceholder: Story = {
     return (
       <div 
         style={{ 
-          width: '600px',
-          padding: '2rem',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           background: '#0a0a0a',
-          borderRadius: '12px'
+          padding: '2rem'
         }}
         data-theme="dark"
       >
-        <ChatInput
-          value={value}
-          onChange={setValue}
-          onSend={(content) => {
-            console.log('Sent:', content)
-            setValue('')
-          }}
-          placeholder="Ask me anything..."
-        />
+        <div style={{ width: '600px' }}>
+          <ChatInput
+            value={value}
+            onChange={setValue}
+            onSend={(content) => {
+              console.log('Sent:', content)
+              setValue('')
+            }}
+            placeholder="Ask me anything..."
+          />
+        </div>
       </div>
     )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
@@ -125,25 +157,33 @@ export const WithMaxLength: Story = {
     return (
       <div 
         style={{ 
-          width: '600px',
-          padding: '2rem',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           background: '#0a0a0a',
-          borderRadius: '12px'
+          padding: '2rem'
         }}
         data-theme="dark"
       >
-        <ChatInput
-          value={value}
-          onChange={setValue}
-          onSend={(content) => {
-            console.log('Sent:', content)
-            setValue('')
-          }}
-          maxLength={100}
-          placeholder="Maximum 100 characters"
-        />
+        <div style={{ width: '600px' }}>
+          <ChatInput
+            value={value}
+            onChange={setValue}
+            onSend={(content) => {
+              console.log('Sent:', content)
+              setValue('')
+            }}
+            maxLength={100}
+            placeholder="Maximum 100 characters"
+          />
+        </div>
       </div>
     )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
