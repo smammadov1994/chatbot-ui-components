@@ -1,10 +1,13 @@
-import { Meta } from '@storybook/blocks'
+import { Meta, Title, Subtitle, Description, Source } from '@storybook/blocks'
 
 <Meta title="Getting Started" />
 
-# Getting Started
+<Title />
+<Subtitle>Welcome to the Chat Component Library</Subtitle>
 
-Welcome to the Chat Component Library! This guide will help you get up and running quickly.
+<Description>
+This guide helps you install and use the chat component library quickly.
+</Description>
 
 ## Installation
 
@@ -52,15 +55,13 @@ function App() {
 }
 ```
 
-## Key Features
-
-### Theme Support
+## Theme Support
 
 ```tsx
 <ChatInterface messages={messages} theme="dark" />
 ```
 
-### Message Types
+## Message Types
 
 ```tsx
 const userMessage = { id: '1', role: 'user', content: 'Hello!', timestamp: new Date() }
@@ -73,10 +74,9 @@ const assistantMessage = {
 }
 ```
 
-### Markdown Support
+## Markdown Support
 
-> Assistant messages support **Markdown** automatically.  
-> Example:
+> Assistant messages support **Markdown** automatically:
 >
 > ```
 > **Bold text**
@@ -84,7 +84,7 @@ const assistantMessage = {
 > - List item
 > ```
 
-### Loading States
+## Loading States
 
 ```tsx
 const [isLoading, setIsLoading] = useState(false)
@@ -96,7 +96,7 @@ const [isLoading, setIsLoading] = useState(false)
 />
 ```
 
-### Customization
+## Customization
 
 ```css
 :root {
@@ -106,7 +106,7 @@ const [isLoading, setIsLoading] = useState(false)
 }
 ```
 
-### Message Actions
+## Message Actions
 
 ```tsx
 <ChatInterface
@@ -117,7 +117,7 @@ const [isLoading, setIsLoading] = useState(false)
 />
 ```
 
-### Custom Thinking Phrases
+## Custom Thinking Phrases
 
 ```tsx
 <ChatInterface
@@ -130,7 +130,7 @@ const [isLoading, setIsLoading] = useState(false)
 />
 ```
 
-### TypeScript Support
+## TypeScript Support
 
 ```tsx
 import type {
@@ -139,21 +139,3 @@ import type {
   MessageActionType
 } from '@pumpads/chat-component-library'
 ```
-
----
-
-That’s the **full file** — no syntax inside template literals, no nested fences, totally parser-safe.
-
----
-
-### 🧱 Next steps
-1. Replace your current `stories/GettingStarted.mdx` with this version.  
-2. Save →  
-   ```bash
-   git add stories/GettingStarted.mdx
-   git commit -m "Simplify GettingStarted.mdx to fix Storybook MDX parsing"
-   git push origin master
-   ```
-3. Re-run the workflow in GitHub Actions.
-
-This should finally build cleanly ✅ — Storybook’s MDX parser will have nothing left to choke on.
