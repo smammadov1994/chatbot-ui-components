@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ThinkingIndicator } from '../src/components/ThinkingIndicator'
 
 const meta: Meta<typeof ThinkingIndicator> = {

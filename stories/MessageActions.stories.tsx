@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { MessageActions } from '../src/components/MessageActions'
 
 const meta: Meta<typeof MessageActions> = {

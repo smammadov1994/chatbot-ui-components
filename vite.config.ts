@@ -15,7 +15,7 @@ export default defineConfig({
       rollupTypes: true
     }),
   ].filter(Boolean), // removes "false" or undefined items from the array
-  
+
   build: {
     lib: {
       entry: 'src/index.ts',
