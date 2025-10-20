@@ -9,7 +9,7 @@ on:
       - "stories/**"
       - ".storybook/**"
       - "package.json"
-  workflow_dispatch:  # ✅ This line enables the "Run workflow" button in the Actions tab
+  workflow_dispatch:  # ✅ allows manual "Run workflow" button
 
 permissions:
   contents: read
@@ -28,29 +28,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1 — Checkout code
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Step 2 — Setup Node.js 20 (Storybook 9 requires this)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: '20'
+          cache: 'npm'
 
+      # Step 3 — Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
+      # Step 4 — Fix Rollup optional dependency issue (npm bug)
+      - name: Fix Rollup optional dependency issue
+        run: npm install rollup --force
+
+      # Step 5 — Build Storybook
       - name: Build Storybook
         run: npm run build-storybook
 
+      # Step 6 — Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Step 7 — Upload build artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./storybook-static
+          path: './storybook-static'
 
+      # Step 8 — Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
