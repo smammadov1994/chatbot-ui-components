@@ -7,6 +7,12 @@ const meta: Meta<typeof ChatInput> = {
   component: ChatInput,
   parameters: {
     layout: 'centered',
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 400,
+      },
+    },
   },
   tags: ['autodocs'],
 }
@@ -15,22 +21,25 @@ export default meta
 type Story = StoryObj<typeof ChatInput>
 
 export const Default: Story = {
-  render: () => {
+  render: (args, { viewMode }) => {
     const [value, setValue] = useState('')
+    const isDocsMode = viewMode === 'docs'
+    
     return (
       <div 
         style={{ 
-          width: '100vw',
-          height: '100vh',
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '300px' : '100vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           background: '#0a0a0a',
-          padding: '2rem'
+          padding: '2rem',
+          boxSizing: 'border-box'
         }}
         data-theme="dark"
       >
-        <div style={{ width: '600px' }}>
+        <div style={{ width: '100%', maxWidth: '600px' }}>
           <ChatInput
             value={value}
             onChange={setValue}
@@ -49,22 +58,25 @@ export const Default: Story = {
 }
 
 export const WithFileUpload: Story = {
-  render: () => {
+  render: (args, { viewMode }) => {
     const [value, setValue] = useState('')
+    const isDocsMode = viewMode === 'docs'
+    
     return (
       <div 
         style={{ 
-          width: '100vw',
-          height: '100vh',
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '300px' : '100vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           background: '#0a0a0a',
-          padding: '2rem'
+          padding: '2rem',
+          boxSizing: 'border-box'
         }}
         data-theme="dark"
       >
-        <div style={{ width: '600px' }}>
+        <div style={{ width: '100%', maxWidth: '600px' }}>
           <ChatInput
             value={value}
             onChange={setValue}
@@ -85,22 +97,25 @@ export const WithFileUpload: Story = {
 }
 
 export const Disabled: Story = {
-  render: () => {
+  render: (args, { viewMode }) => {
     const [value, setValue] = useState('This input is disabled')
+    const isDocsMode = viewMode === 'docs'
+    
     return (
       <div 
         style={{ 
-          width: '100vw',
-          height: '100vh',
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '300px' : '100vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           background: '#0a0a0a',
-          padding: '2rem'
+          padding: '2rem',
+          boxSizing: 'border-box'
         }}
         data-theme="dark"
       >
-        <div style={{ width: '600px' }}>
+        <div style={{ width: '100%', maxWidth: '600px' }}>
           <ChatInput
             value={value}
             onChange={setValue}
@@ -117,22 +132,25 @@ export const Disabled: Story = {
 }
 
 export const CustomPlaceholder: Story = {
-  render: () => {
+  render: (args, { viewMode }) => {
     const [value, setValue] = useState('')
+    const isDocsMode = viewMode === 'docs'
+    
     return (
       <div 
         style={{ 
-          width: '100vw',
-          height: '100vh',
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '300px' : '100vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           background: '#0a0a0a',
-          padding: '2rem'
+          padding: '2rem',
+          boxSizing: 'border-box'
         }}
         data-theme="dark"
       >
-        <div style={{ width: '600px' }}>
+        <div style={{ width: '100%', maxWidth: '600px' }}>
           <ChatInput
             value={value}
             onChange={setValue}
@@ -152,22 +170,25 @@ export const CustomPlaceholder: Story = {
 }
 
 export const WithMaxLength: Story = {
-  render: () => {
+  render: (args, { viewMode }) => {
     const [value, setValue] = useState('')
+    const isDocsMode = viewMode === 'docs'
+    
     return (
       <div 
         style={{ 
-          width: '100vw',
-          height: '100vh',
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '300px' : '100vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           background: '#0a0a0a',
-          padding: '2rem'
+          padding: '2rem',
+          boxSizing: 'border-box'
         }}
         data-theme="dark"
       >
-        <div style={{ width: '600px' }}>
+        <div style={{ width: '100%', maxWidth: '600px' }}>
           <ChatInput
             value={value}
             onChange={setValue}

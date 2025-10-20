@@ -7,7 +7,13 @@ const meta: Meta<typeof ChatMessage> = {
   title: 'Components/ChatMessage',
   component: ChatMessage,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 400,
+      },
+    },
   },
   tags: ['autodocs'],
 }
@@ -31,62 +37,125 @@ const assistantMessage: ChatMessageType = {
 }
 
 export const UserMessage: Story = {
-  render: () => (
-    <div style={{ maxWidth: '800px', padding: '2rem', background: '#0a0a0a' }}>
-      <ChatMessage
-        message={userMessage}
-        showTimestamp={true}
-      />
-    </div>
-  ),
-}
-
-export const AssistantMessage: Story = {
-  render: () => (
-    <div style={{ maxWidth: '800px', padding: '2rem', background: '#0a0a0a' }}>
-      <ChatMessage
-        message={assistantMessage}
-        showActions={true}
-        showTimestamp={true}
-      />
-      <div style={{ marginTop: '0.5rem', marginLeft: '0' }}>
-        <MessageActions
-          messageId={assistantMessage.id}
-          content={assistantMessage.content}
-          onRegenerate={(id) => console.log('Regenerate:', id)}
-          onCopy={() => console.log('Copied!')}
-          onLove={(id) => console.log('Loved:', id)}
-          onImprove={(id) => console.log('Improve:', id)}
-        />
-      </div>
-    </div>
-  ),
-}
-
-export const Conversation: Story = {
-  render: () => (
-    <div style={{ maxWidth: '800px', padding: '2rem', background: '#0a0a0a', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <ChatMessage
-        message={userMessage}
-        showTimestamp={true}
-      />
-      <div>
-        <ChatMessage
-          message={assistantMessage}
-          showActions={true}
-          showTimestamp={true}
-        />
-        <div style={{ marginTop: '0.5rem' }}>
-          <MessageActions
-            messageId={assistantMessage.id}
-            content={assistantMessage.content}
-            onRegenerate={(id) => console.log('Regenerate:', id)}
-            onCopy={() => console.log('Copied!')}
-            onLove={(id) => console.log('Loved:', id)}
-            onImprove={(id) => console.log('Improve:', id)}
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '300px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <div style={{ width: '100%', maxWidth: '800px' }}>
+          <ChatMessage
+            message={userMessage}
+            showTimestamp={true}
           />
         </div>
       </div>
-    </div>
-  ),
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
+  },
+}
+
+export const AssistantMessage: Story = {
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '400px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <div style={{ width: '100%', maxWidth: '800px' }}>
+          <ChatMessage
+            message={assistantMessage}
+            showActions={true}
+            showTimestamp={true}
+          />
+          <div style={{ marginTop: '0.5rem' }}>
+            <MessageActions
+              messageId={assistantMessage.id}
+              content={assistantMessage.content}
+              onRegenerate={(id) => console.log('Regenerate:', id)}
+              onCopy={() => console.log('Copied!')}
+              onLove={(id) => console.log('Loved:', id)}
+              onImprove={(id) => console.log('Improve:', id)}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
+  },
+}
+
+export const Conversation: Story = {
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '500px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <div style={{ width: '100%', maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <ChatMessage
+            message={userMessage}
+            showTimestamp={true}
+          />
+          <div>
+            <ChatMessage
+              message={assistantMessage}
+              showActions={true}
+              showTimestamp={true}
+            />
+            <div style={{ marginTop: '0.5rem' }}>
+              <MessageActions
+                messageId={assistantMessage.id}
+                content={assistantMessage.content}
+                onRegenerate={(id) => console.log('Regenerate:', id)}
+                onCopy={() => console.log('Copied!')}
+                onLove={(id) => console.log('Loved:', id)}
+                onImprove={(id) => console.log('Improve:', id)}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
+  },
 }

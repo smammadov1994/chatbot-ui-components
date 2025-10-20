@@ -6,12 +6,11 @@ const meta: Meta<typeof MessageActions> = {
   component: MessageActions,
   parameters: {
     layout: 'centered',
-    backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#0a0a0a' },
-        { name: 'light', value: '#ffffff' },
-      ],
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 200,
+      },
     },
   },
   tags: ['autodocs'],
@@ -29,48 +28,163 @@ type Story = StoryObj<typeof MessageActions>
 const sampleContent = 'This is a sample AI response with markdown support and multiple lines of text.'
 
 export const Default: Story = {
-  args: {
-    messageId: '1',
-    content: sampleContent,
-    onRegenerate: (id) => console.log('Regenerate:', id),
-    onCopy: (content) => console.log('Copy:', content),
-    onLove: (id) => console.log('Love:', id),
-    onImprove: (id) => console.log('Improve:', id),
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '150px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <MessageActions
+          messageId="1"
+          content={sampleContent}
+          onRegenerate={(id) => console.log('Regenerate:', id)}
+          onCopy={(content) => console.log('Copy:', content)}
+          onLove={(id) => console.log('Love:', id)}
+          onImprove={(id) => console.log('Improve:', id)}
+        />
+      </div>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
 export const RegenerateButton: Story = {
-  args: {
-    messageId: '2',
-    content: sampleContent,
-    actions: ['regenerate'],
-    onRegenerate: (id) => console.log('Regenerate:', id),
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '150px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <MessageActions
+          messageId="2"
+          content={sampleContent}
+          actions={['regenerate']}
+          onRegenerate={(id) => console.log('Regenerate:', id)}
+        />
+      </div>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
 export const CopyButton: Story = {
-  args: {
-    messageId: '3',
-    content: sampleContent,
-    actions: ['copy'],
-    onCopy: (content) => console.log('Copy:', content),
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '150px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <MessageActions
+          messageId="3"
+          content={sampleContent}
+          actions={['copy']}
+          onCopy={(content) => console.log('Copy:', content)}
+        />
+      </div>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
 export const LoveButton: Story = {
-  args: {
-    messageId: '4',
-    content: sampleContent,
-    actions: ['love'],
-    onLove: (id) => console.log('Love:', id),
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '150px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <MessageActions
+          messageId="4"
+          content={sampleContent}
+          actions={['love']}
+          onLove={(id) => console.log('Love:', id)}
+        />
+      </div>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
 
 export const ImproveButton: Story = {
-  args: {
-    messageId: '5',
-    content: sampleContent,
-    actions: ['improve'],
-    onImprove: (id) => console.log('Improve:', id),
+  render: (args, { viewMode }) => {
+    const isDocsMode = viewMode === 'docs'
+    
+    return (
+      <div 
+        style={{ 
+          width: isDocsMode ? '100%' : '100vw',
+          height: isDocsMode ? '150px' : '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          padding: '2rem',
+          boxSizing: 'border-box'
+        }}
+        data-theme="dark"
+      >
+        <MessageActions
+          messageId="5"
+          content={sampleContent}
+          actions={['improve']}
+          onImprove={(id) => console.log('Improve:', id)}
+        />
+      </div>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
   },
 }
