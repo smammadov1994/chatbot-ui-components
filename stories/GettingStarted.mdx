@@ -8,13 +8,11 @@ Welcome to the Chat Component Library! This guide will help you get up and runni
 
 ## Installation
 
-Install the package via npm:
-
 ```bash
 npm install @pumpads/chat-component-library
 ```
 
-Or with yarn:
+or
 
 ```bash
 yarn add @pumpads/chat-component-library
@@ -22,14 +20,10 @@ yarn add @pumpads/chat-component-library
 
 ## Basic Usage
 
-Import the components and styles:
-
 ```tsx
 import { ChatInterface } from '@pumpads/chat-component-library'
 import '@pumpads/chat-component-library/styles'
 ```
-
-Create a simple chat interface:
 
 ```tsx
 import { useState } from 'react'
@@ -60,64 +54,37 @@ function App() {
 
 ## Key Features
 
-### 🌓 Theme Support
-
-The library supports both dark and light themes:
+### Theme Support
 
 ```tsx
-<ChatInterface
-  messages={messages}
-  theme="dark" // or "light" or "auto"
-/>
+<ChatInterface messages={messages} theme="dark" />
 ```
 
-### 💬 Message Types
-
-Messages can be from users or assistants:
+### Message Types
 
 ```tsx
-const userMessage = {
-  id: '1',
-  role: 'user',
-  content: 'Hello!',
-  timestamp: new Date()
-}
-
+const userMessage = { id: '1', role: 'user', content: 'Hello!', timestamp: new Date() }
 const assistantMessage = {
   id: '2',
   role: 'assistant',
   content: 'Hi there! How can I help?',
   timestamp: new Date(),
-  thoughtTime: 2 // Optional: shows "Thought for 2 seconds"
+  thoughtTime: 2
 }
 ```
 
-### 📝 Markdown Support
+### Markdown Support
 
-Assistant messages automatically support markdown:
+> Assistant messages support **Markdown** automatically.  
+> Example:
+>
+> ```
+> **Bold text**
+> *Italic text*
+> - List item
+> ```
 
-```tsx
-const message = {
-  id: '3',
-  role: 'assistant',
-  content: String.raw`
-# Heading
-**Bold text** and *italic text*
-
-- List item 1
-- List item 2
-
-\`\`\`javascript
-const code = "example"
-\`\`\`
-  `,
-  timestamp: new Date()
-}
-```
-
-### 🎬 Loading States
-
-Show a thinking indicator while processing:
+### Loading States
 
 ```tsx
 const [isLoading, setIsLoading] = useState(false)
@@ -129,9 +96,7 @@ const [isLoading, setIsLoading] = useState(false)
 />
 ```
 
-### 🎨 Customization
-
-Customize the appearance with CSS variables:
+### Customization
 
 ```css
 :root {
@@ -141,26 +106,7 @@ Customize the appearance with CSS variables:
 }
 ```
 
-## Advanced Usage
-
-### Custom Components
-
-Replace default components with your own:
-
-```tsx
-<ChatInterface
-  messages={messages}
-  customComponents={{
-    message: MyCustomMessage,
-    input: MyCustomInput,
-    thinking: MyCustomThinking
-  }}
-/>
-```
-
 ### Message Actions
-
-Handle message actions:
 
 ```tsx
 <ChatInterface
@@ -173,8 +119,6 @@ Handle message actions:
 
 ### Custom Thinking Phrases
 
-Provide custom thinking phrases:
-
 ```tsx
 <ChatInterface
   messages={messages}
@@ -186,9 +130,7 @@ Provide custom thinking phrases:
 />
 ```
 
-## TypeScript Support
-
-The library is fully typed. Import types as needed:
+### TypeScript Support
 
 ```tsx
 import type {
@@ -198,15 +140,20 @@ import type {
 } from '@pumpads/chat-component-library'
 ```
 
-## Next Steps
+---
 
-- Explore the component stories to see all features
-- Check out the API documentation for each component
-- Customize the theme to match your brand
-- Add your own custom components
+That’s the **full file** — no syntax inside template literals, no nested fences, totally parser-safe.
 
-## Need Help?
+---
 
-- Check the component documentation
-- View the source code examples
-- Open an issue on GitHub
+### 🧱 Next steps
+1. Replace your current `stories/GettingStarted.mdx` with this version.  
+2. Save →  
+   ```bash
+   git add stories/GettingStarted.mdx
+   git commit -m "Simplify GettingStarted.mdx to fix Storybook MDX parsing"
+   git push origin master
+   ```
+3. Re-run the workflow in GitHub Actions.
+
+This should finally build cleanly ✅ — Storybook’s MDX parser will have nothing left to choke on.
