@@ -11,10 +11,11 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      options: {
-        dark: { name: 'dark', value: '#0a0a0a' },
-        light: { name: 'light', value: '#ffffff' }
-      }
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#0a0a0a' },
+        { name: 'light', value: '#ffffff' }
+      ]
     },
   },
 
@@ -33,9 +34,8 @@ const preview: Preview = {
   },
 
   initialGlobals: {
-    backgrounds: {
-      value: 'dark'
-    }
+    backgrounds: { value: 'dark' },
+    theme: 'dark'
   }
 }
 
