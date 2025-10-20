@@ -18,7 +18,15 @@ export const Default: Story = {
   render: () => {
     const [value, setValue] = useState('')
     return (
-      <div style={{ width: '600px' }}>
+      <div 
+        style={{ 
+          width: '600px',
+          padding: '2rem',
+          background: '#0a0a0a',
+          borderRadius: '12px'
+        }}
+        data-theme="dark"
+      >
         <ChatInput
           value={value}
           onChange={setValue}
@@ -36,7 +44,15 @@ export const WithFileUpload: Story = {
   render: () => {
     const [value, setValue] = useState('')
     return (
-      <div style={{ width: '600px' }}>
+      <div 
+        style={{ 
+          width: '600px',
+          padding: '2rem',
+          background: '#0a0a0a',
+          borderRadius: '12px'
+        }}
+        data-theme="dark"
+      >
         <ChatInput
           value={value}
           onChange={setValue}
@@ -56,7 +72,15 @@ export const Disabled: Story = {
   render: () => {
     const [value, setValue] = useState('This input is disabled')
     return (
-      <div style={{ width: '600px' }}>
+      <div 
+        style={{ 
+          width: '600px',
+          padding: '2rem',
+          background: '#0a0a0a',
+          borderRadius: '12px'
+        }}
+        data-theme="dark"
+      >
         <ChatInput
           value={value}
           onChange={setValue}
@@ -72,7 +96,15 @@ export const CustomPlaceholder: Story = {
   render: () => {
     const [value, setValue] = useState('')
     return (
-      <div style={{ width: '600px' }}>
+      <div 
+        style={{ 
+          width: '600px',
+          padding: '2rem',
+          background: '#0a0a0a',
+          borderRadius: '12px'
+        }}
+        data-theme="dark"
+      >
         <ChatInput
           value={value}
           onChange={setValue}
@@ -91,7 +123,15 @@ export const WithMaxLength: Story = {
   render: () => {
     const [value, setValue] = useState('')
     return (
-      <div style={{ width: '600px' }}>
+      <div 
+        style={{ 
+          width: '600px',
+          padding: '2rem',
+          background: '#0a0a0a',
+          borderRadius: '12px'
+        }}
+        data-theme="dark"
+      >
         <ChatInput
           value={value}
           onChange={setValue}
